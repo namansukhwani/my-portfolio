@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Phone, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, ChevronDown, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import avatar from "@/assets/naman-avatar.jpg";
@@ -8,13 +8,23 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
+        <motion.img
+          src={heroBg}
+          alt=""
+          className="w-full h-full object-cover opacity-40"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
 
       {/* Scanline overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(120 100% 50% / 0.1) 2px, hsl(120 100% 50% / 0.1) 4px)" }}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(180 100% 50% / 0.1) 2px, hsl(180 100% 50% / 0.1) 4px)",
+        }}
       />
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -71,14 +81,15 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          Building scalable backend systems at <span className="text-primary/80">Bajaj Finserv Health</span>. 
-          Passionate about microservices, event-driven architecture, and AI integration. 
+          Building scalable backend systems at{" "}
+          <span className="text-primary/80">Bajaj Finserv Health</span>.
+          Passionate about microservices, event-driven architecture, and AI integration.
           3+ years of shipping production-grade HealthTech solutions.
         </motion.p>
 
-        {/* Social links */}
+        {/* Social links + Resume */}
         <motion.div
-          className="flex items-center justify-center gap-4 mb-16"
+          className="flex items-center justify-center gap-4 mb-16 flex-wrap"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.6 }}
@@ -102,6 +113,17 @@ const HeroSection = () => {
               <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </motion.a>
           ))}
+
+          <motion.a
+            href="/Naman_Sukhwani_Resume.pdf"
+            download
+            className="group px-5 py-3 rounded-lg border border-primary/40 bg-primary/10 backdrop-blur-sm hover:bg-primary/20 hover:box-glow transition-all duration-300 flex items-center gap-2 font-mono text-sm text-primary"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Download className="w-4 h-4" />
+            Resume
+          </motion.a>
         </motion.div>
 
         {/* Scroll indicator */}
