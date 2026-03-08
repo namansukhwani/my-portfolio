@@ -6,7 +6,7 @@ const education = [
   {
     degree: "Bachelor of Technology (B.Tech)",
     field: "Computer Science & Engineering",
-    institution: "Medi-Caps University",
+    institution: "Acropolis Institute of Technology and Research",
     location: "Indore, IND",
     period: "2018 – 2022",
     highlights: [
@@ -19,10 +19,10 @@ const education = [
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-24 px-6">
+    <section id="education" className="py-16 px-6">
       <div className="max-w-5xl mx-auto">
         <AnimatedSection>
-          <div className="flex items-center gap-3 mb-16">
+          <div className="flex items-center gap-3 mb-8">
             <GraduationCap className="w-5 h-5 text-primary" />
             <h2 className="font-mono text-sm text-primary tracking-widest uppercase">
               Education
@@ -49,7 +49,7 @@ const EducationSection = () => {
                     {edu.institution} — {edu.location}
                   </p>
                 </div>
-                <span className="font-mono text-xs text-muted-foreground mt-2 md:mt-0 bg-secondary/50 px-3 py-1 rounded-full">
+                <span className="font-mono text-xs text-muted-foreground mt-2 md:mt-0 bg-secondary/50 px-3 py-1 rounded-full whitespace-nowrap">
                   {edu.period}
                 </span>
               </div>

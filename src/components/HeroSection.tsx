@@ -5,7 +5,7 @@ import avatar from "@/assets/naman-avatar.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background */}
       <div className="absolute inset-0">
         <motion.img
