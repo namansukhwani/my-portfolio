@@ -7,38 +7,38 @@
 @layer base {
   :root {
     --background: 220 20% 4%;
-    --foreground: 140 100% 90%;
+    --foreground: 185 80% 85%;
 
     --card: 220 18% 7%;
-    --card-foreground: 140 100% 90%;
+    --card-foreground: 185 80% 85%;
 
     --popover: 220 18% 7%;
-    --popover-foreground: 140 100% 90%;
+    --popover-foreground: 185 80% 85%;
 
-    --primary: 120 100% 50%;
+    --primary: 180 100% 45%;
     --primary-foreground: 220 20% 4%;
 
     --secondary: 220 15% 12%;
-    --secondary-foreground: 140 60% 80%;
+    --secondary-foreground: 185 50% 70%;
 
     --muted: 220 15% 10%;
-    --muted-foreground: 220 10% 50%;
+    --muted-foreground: 200 20% 55%;
 
-    --accent: 160 100% 45%;
+    --accent: 175 100% 40%;
     --accent-foreground: 220 20% 4%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 120 40% 15%;
+    --border: 180 40% 15%;
     --input: 220 15% 12%;
-    --ring: 120 100% 50%;
+    --ring: 180 100% 45%;
 
     --radius: 0.5rem;
 
-    --neon-glow: 0 0 10px hsl(120 100% 50% / 0.3), 0 0 40px hsl(120 100% 50% / 0.1);
-    --neon-glow-strong: 0 0 10px hsl(120 100% 50% / 0.5), 0 0 40px hsl(120 100% 50% / 0.2), 0 0 80px hsl(120 100% 50% / 0.1);
-    --card-glow: 0 0 1px hsl(120 100% 50% / 0.1), 0 4px 20px hsl(220 20% 4% / 0.8);
+    --neon-glow: 0 0 10px hsl(180 100% 45% / 0.3), 0 0 40px hsl(180 100% 45% / 0.1);
+    --neon-glow-strong: 0 0 10px hsl(180 100% 45% / 0.5), 0 0 40px hsl(180 100% 45% / 0.2), 0 0 80px hsl(180 100% 45% / 0.1);
+    --card-glow: 0 0 1px hsl(180 100% 45% / 0.1), 0 4px 20px hsl(220 20% 4% / 0.8);
   }
 }
 
@@ -57,8 +57,8 @@
   }
 
   ::selection {
-    background: hsl(120 100% 50% / 0.25);
-    color: hsl(120 100% 90%);
+    background: hsl(180 100% 45% / 0.25);
+    color: hsl(185 80% 90%);
   }
 
   ::-webkit-scrollbar {
@@ -68,11 +68,11 @@
     background: hsl(220 20% 4%);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(120 40% 15%);
+    background: hsl(180 40% 15%);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(120 100% 50% / 0.4);
+    background: hsl(180 100% 45% / 0.4);
   }
 }
 
@@ -90,7 +90,7 @@
     box-shadow: var(--neon-glow-strong);
   }
   .border-glow {
-    border-color: hsl(120 100% 50% / 0.3);
+    border-color: hsl(180 100% 45% / 0.3);
   }
 
   @keyframes flicker {
