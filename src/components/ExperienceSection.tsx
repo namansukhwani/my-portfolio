@@ -1,4 +1,6 @@
 import { Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
+import AnimatedSection from "./AnimatedSection";
 
 const experiences = [
   {
@@ -47,48 +49,53 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-center gap-3 mb-16">
-          <Briefcase className="w-5 h-5 text-primary" />
-          <h2 className="font-mono text-sm text-primary tracking-widest uppercase">
-            Work Experience
-          </h2>
-          <div className="flex-1 h-px bg-border" />
-        </div>
+        <AnimatedSection>
+          <div className="flex items-center gap-3 mb-16">
+            <Briefcase className="w-5 h-5 text-primary" />
+            <h2 className="font-mono text-sm text-primary tracking-widest uppercase">
+              Work Experience
+            </h2>
+            <div className="flex-1 h-px bg-border" />
+          </div>
+        </AnimatedSection>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-border to-transparent" />
 
           <div className="space-y-16">
             {experiences.map((exp, i) => (
-              <div key={i} className="relative pl-8 md:pl-20">
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-8 top-1 w-2 h-2 -translate-x-[3px] rounded-full bg-primary box-glow" />
+              <AnimatedSection key={i} delay={i * 0.15}>
+                <div className="relative pl-8 md:pl-20">
+                  <div className="absolute left-0 md:left-8 top-1 w-2 h-2 -translate-x-[3px] rounded-full bg-primary box-glow" />
 
-                <div className="group p-6 rounded-lg border border-border bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-500">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                        {exp.title}
-                      </h3>
-                      <p className="font-mono text-sm text-primary/70">
-                        {exp.company} — {exp.location}
-                      </p>
+                  <motion.div
+                    className="group p-6 rounded-lg border border-border bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-500"
+                    whileHover={{ scale: 1.01 }}
+                  >
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {exp.title}
+                        </h3>
+                        <p className="font-mono text-sm text-primary/70">
+                          {exp.company} — {exp.location}
+                        </p>
+                      </div>
+                      <span className="font-mono text-xs text-muted-foreground mt-2 md:mt-0 bg-secondary/50 px-3 py-1 rounded-full">
+                        {exp.period}
+                      </span>
                     </div>
-                    <span className="font-mono text-xs text-muted-foreground mt-2 md:mt-0 bg-secondary/50 px-3 py-1 rounded-full">
-                      {exp.period}
-                    </span>
-                  </div>
-                  <ul className="space-y-2">
-                    {exp.highlights.map((h, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <span className="text-primary/50 mt-1 shrink-0">▹</span>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="space-y-2">
+                      {exp.highlights.map((h, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <span className="text-primary/50 mt-1 shrink-0">▹</span>
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
