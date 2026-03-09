@@ -1,4 +1,11 @@
-import { Github, Linkedin, Mail, Phone, ChevronDown, Download } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  ChevronDown,
+  Download,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import avatar from "@/assets/naman-avatar.jpg";
@@ -71,8 +78,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <span className="text-primary/70">&gt;</span> Software Development Engineer{" "}
-          <span className="text-primary animate-flicker">_</span>
+          <span className="text-primary/70">&gt;</span> Software Development
+          Engineer <span className="text-primary animate-flicker">_</span>
         </motion.div>
 
         <motion.p
@@ -83,8 +90,9 @@ const HeroSection = () => {
         >
           Building scalable backend systems at{" "}
           <span className="text-primary/80">Bajaj Finserv Health</span>.
-          Passionate about microservices, event-driven architecture, and AI integration.
-          3+ years of shipping production-grade HealthTech solutions.
+          Passionate about microservices, event-driven architecture, and AI
+          integration. 3+ years of shipping production-grade HealthTech
+          solutions.
         </motion.p>
 
         {/* Social links + Resume */}
@@ -95,9 +103,21 @@ const HeroSection = () => {
           transition={{ delay: 0.7, duration: 0.6 }}
         >
           {[
-            { icon: Github, href: "https://github.com/namansukhwani", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com/in/namansukhwani", label: "LinkedIn" },
-            { icon: Mail, href: "mailto:namansukhwani@gmail.com", label: "Email" },
+            {
+              icon: Github,
+              href: "https://github.com/namansukhwani",
+              label: "GitHub",
+            },
+            {
+              icon: Linkedin,
+              href: "https://linkedin.com/in/namansukhwani",
+              label: "LinkedIn",
+            },
+            {
+              icon: Mail,
+              href: "mailto:namansukhwani@gmail.com",
+              label: "Email",
+            },
             { icon: Phone, href: "tel:+918982338575", label: "Phone" },
           ].map(({ icon: Icon, href, label }) => (
             <motion.a
@@ -116,7 +136,7 @@ const HeroSection = () => {
 
           <motion.a
             href="/Naman_Sukhwani_Resume.pdf"
-            download
+            download="Naman_Sukhwani_Resume.pdf"
             className="group px-5 py-3 rounded-lg border border-primary/40 bg-primary/10 backdrop-blur-sm hover:bg-primary/20 hover:box-glow transition-all duration-300 flex items-center gap-2 font-mono text-sm text-primary"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}

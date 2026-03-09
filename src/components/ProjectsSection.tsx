@@ -6,7 +6,8 @@ const projects = [
   {
     name: "PocketDoc — Patient App",
     repo: "namansukhwani/PocketDocReactNativeMobileApp",
-    description: "A new healthcare system mobile app for patients. React Native based telemedicine platform with appointment booking, video consultations, and health records.",
+    description:
+      "A new healthcare system mobile app for patients. React Native based telemedicine platform with appointment booking, video consultations, and health records.",
     tech: ["React Native", "JavaScript", "Firebase"],
     stars: 5,
     forks: 2,
@@ -14,40 +15,36 @@ const projects = [
   {
     name: "PocketDoc — Doctor App",
     repo: "namansukhwani/PocketDocDoctorMobileApp",
-    description: "Doctor-side app for managing online appointments, patient records, and real-time consultations at a single place.",
+    description:
+      "Doctor-side app for managing online appointments, patient records, and real-time consultations at a single place.",
     tech: ["React Native", "JavaScript", "Node.js"],
     stars: 3,
     forks: 0,
   },
   {
-    name: "Flexmeet — Frontend",
-    repo: "namansukhwani/Flexmeet",
-    description: "Video conferencing web app frontend with real-time communication, screen sharing, and chat features built with modern web technologies.",
+    name: "FlexMeet — Frontend",
+    repo: "namansukhwani/FlexMeet",
+    description:
+      "Video conferencing web app frontend with real-time communication, screen sharing, and chat features built with modern web technologies.",
     tech: ["React", "JavaScript", "WebRTC"],
     stars: 1,
     forks: 0,
   },
   {
-    name: "Flexmeet — Backend",
-    repo: "namansukhwani/flexmeetBackend",
-    description: "Backend service powering the Flexmeet video conferencing platform. Handles signaling, room management, and real-time communication.",
+    name: "FlexMeet — Backend",
+    repo: "namansukhwani/FlexMeet-Backend",
+    description:
+      "Backend service powering the FlexMeet video conferencing platform. Handles signaling, room management, and real-time communication.",
     tech: ["Node.js", "Express", "Socket.io"],
     stars: 1,
     forks: 0,
   },
   {
-    name: "PVote — Frontend",
-    repo: "namansukhwani/PVote",
-    description: "Blockchain-based secure voting platform frontend. Modern UI for casting and verifying votes with transparency and security.",
+    name: "PVote",
+    repo: "namansukhwani/Voting-Dapp-PVote",
+    description:
+      "Blockchain-based secure voting platform frontend. Modern UI for casting and verifying votes with transparency and security.",
     tech: ["React", "JavaScript", "Web3"],
-    stars: 1,
-    forks: 0,
-  },
-  {
-    name: "PVote — Backend",
-    repo: "namansukhwani/PVoteBackend",
-    description: "Backend API for the PVote blockchain voting system. Manages election data, voter authentication, and smart contract interactions.",
-    tech: ["Node.js", "Express", "Blockchain"],
     stars: 1,
     forks: 0,
   },
@@ -92,7 +89,10 @@ const ProjectsSection = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <span key={t} className="font-mono text-xs px-2 py-0.5 rounded bg-secondary/50 text-secondary-foreground border border-border">
+                      <span
+                        key={t}
+                        className="font-mono text-xs px-2 py-0.5 rounded bg-secondary/50 text-secondary-foreground border border-border"
+                      >
                         {t}
                       </span>
                     ))}
