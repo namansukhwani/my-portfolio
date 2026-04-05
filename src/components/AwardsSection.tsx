@@ -3,15 +3,16 @@ import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 
 const awards = [
-  { title: "MVP of the Year 2025", icon: Trophy, description: "Recognized as the Most Valuable Player across the entire organization for outstanding contributions and impact.", tier: "gold" },
-  { title: "MVP Q4 2024–25", icon: Star, description: "Quarterly MVP recognition for exceptional performance and delivery during Q4 of fiscal year 2024–25.", tier: "gold" },
-  { title: "Hero of the Month", icon: Award, description: "Monthly recognition for going above and beyond in delivering critical features and supporting team success.", tier: "silver" },
-  { title: "Sharp Shark Award", icon: Zap, description: "Special recognition for sharp problem-solving skills and quick execution on high-priority initiatives.", tier: "silver" },
+  { title: "MVP of the Year 2025-26", icon: Trophy, description: "Recognition as the top-performing employee for the entire year.", tier: "gold" },
+  { title: "MVP Q4 2024-25", icon: Star, description: "Awarded for achieving the highest impact and performance during the final quarter.", tier: "gold" },
+  { title: "Hero of the Month July 2024", icon: Award, description: "Monthly honor for going above and beyond regular duties.", tier: "silver" },
+  { title: "Sharp Shark Award July 2023", icon: Zap, description: "Specialized recognition for keen problem-solving, precision, and high efficiency.", tier: "silver" },
 ];
 
 const achievements = [
-  { label: "Pull Shark x2", description: "GitHub Achievement — Prolific pull request contributor" },
-  { label: "Arctic Code Vault Contributor", description: "GitHub Achievement — Code preserved in Arctic vault for future generations" },
+  { label: "Nearly 4 Years", description: "Architecting high-availability microservices and event-driven systems in HealthTech." },
+  { label: "80% Cost Savings", description: "Delivered through infrastructure optimization and platform consolidation." },
+  { label: "AI + Real-Time Systems", description: "Built scalable solutions spanning LLM workflows, notifications, and WebSocket infrastructure." },
 ];
 
 const AwardsSection = () => {
@@ -64,7 +65,7 @@ const AwardsSection = () => {
         <AnimatedSection delay={0.2}>
           <div className="p-6 rounded-lg border border-border bg-card/30">
             <h3 className="font-mono text-xs text-primary mb-4 tracking-wider uppercase">
-              {"// GitHub Achievements"}
+              {"// Impact Snapshot"}
             </h3>
             <div className="flex flex-wrap gap-4">
               {achievements.map((a) => (

@@ -4,16 +4,12 @@ import AnimatedSection from "./AnimatedSection";
 
 const education = [
   {
-    degree: "Bachelor of Technology (B.Tech)",
-    field: "Computer Science & Engineering",
-    institution: "Acropolis Institute of Technology and Research",
-    location: "Indore, IND",
+    degree: "Bachelor of Technology",
+    field: "Computer Science",
+    institution: "Acropolis Institute Of Technology and Research",
+    location: "Indore, India",
     period: "2018 – 2022",
-    highlights: [
-      "CGPA: 8.5 / 10",
-      "Developed multiple full-stack projects including PocketDoc and Flexmeet",
-      "Active participant in hackathons and coding competitions",
-    ],
+    highlights: [],
   },
 ];
 
@@ -53,14 +49,16 @@ const EducationSection = () => {
                   {edu.period}
                 </span>
               </div>
-              <ul className="space-y-2">
-                {edu.highlights.map((h, j) => (
-                  <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="text-primary/50 mt-1 shrink-0">▹</span>
-                    {h}
-                  </li>
-                ))}
-              </ul>
+              {edu.highlights.length > 0 && (
+                <ul className="space-y-2">
+                  {edu.highlights.map((h, j) => (
+                    <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <span className="text-primary/50 mt-1 shrink-0">▹</span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </motion.div>
           </AnimatedSection>
         ))}

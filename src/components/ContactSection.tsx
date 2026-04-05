@@ -43,7 +43,7 @@ const ContactSection = () => {
                 Let's build something <span className="text-primary text-glow">great</span> together
               </h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always open to discussing new opportunities, interesting ideas, or just having a tech conversation. Feel free to reach out!
+                I'm open to discussing impactful backend systems, platform engineering, AI integration, and real-time product challenges. Feel free to reach out.
               </p>
 
               <div className="space-y-4">

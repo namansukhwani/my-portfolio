@@ -4,10 +4,10 @@ import AnimatedSection from "./AnimatedSection";
 
 const skillGroups = [
   { category: "Languages", skills: ["Java", "TypeScript", "JavaScript", "SQL", "YAML"] },
-  { category: "Frameworks", skills: ["Spring Boot", "Spring WebFlux", "Node.js", "NestJS", "React"] },
-  { category: "Technologies", skills: ["R2DBC", "JPA", "WebRTC", "Socket.IO", "Redis", "MongoDB", "PostgreSQL", "OracleDB", "ELK"] },
-  { category: "Tools & Infra", skills: ["Docker", "Git", "Apache Kafka", "Azure Service Bus", "APIM", "ArgoCD", "Keda"] },
-  { category: "Architecture", skills: ["Microservices", "Event-Driven", "WebSockets", "System Design", "AI Integration"] },
+  { category: "Frameworks", skills: ["Spring Boot", "Spring WebFlux", "Node.js", "NestJS", "ReactJS"] },
+  { category: "Technologies", skills: ["R2DBC", "JPA", "WebSockets", "Redis", "MongoDB", "PostgreSQL", "OracleDB", "ELK"] },
+  { category: "Tools", skills: ["Docker", "Git", "Apache Kafka", "Azure Service Bus", "APIM", "ArgoCD", "Keda"] },
+  { category: "Core Competencies", skills: ["Microservices", "Event-Driven Architecture", "System Design", "AI-Integration"] },
 ];
 
 const SkillsSection = () => {

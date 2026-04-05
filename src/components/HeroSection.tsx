@@ -78,8 +78,9 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <span className="text-primary/70">&gt;</span> Software Development
-          Engineer <span className="text-primary animate-flicker">_</span>
+          <span className="text-primary/70">&gt;</span> Senior Software
+          Development Engineer{" "}
+          <span className="text-primary animate-flicker">_</span>
         </motion.div>
 
         <motion.p
@@ -88,11 +89,12 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          Building scalable backend systems at{" "}
-          <span className="text-primary/80">Bajaj Finserv Health</span>.
-          Passionate about microservices, event-driven architecture, and AI
-          integration. 3+ years of shipping production-grade HealthTech
-          solutions.
+          Experienced Senior Software Development Engineer with nearly 4 years
+          of building high-availability microservices and event-driven systems
+          at <span className="text-primary/80">Bajaj Finserv Health</span>.
+          Specialized in Java, TypeScript, Spring Boot, AI integration, and
+          real-time platforms with a track record of reducing operational costs
+          by up to 80%.
         </motion.p>
 
         {/* Social links + Resume */}
