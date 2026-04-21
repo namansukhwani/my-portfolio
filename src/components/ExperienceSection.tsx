@@ -59,55 +59,79 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="py-12 sm:py-20 px-6 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-5xl mx-auto relative z-10">
         <AnimatedSection>
-          <div className="flex items-center gap-3 mb-16">
-            <Briefcase className="w-5 h-5 text-primary" />
-            <h2 className="font-mono text-sm text-primary tracking-widest uppercase">
-              Work Experience
-            </h2>
-            <div className="flex-1 h-px bg-border" />
+          <div className="flex items-center gap-4 mb-12 sm:mb-16 group">
+            <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 transition-transform duration-500">
+              <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <div>
+              <h2 className="font-mono text-[10px] text-primary/60 tracking-[0.4em] uppercase mb-1">
+                Phase 02
+              </h2>
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">Work Experience</h3>
+            </div>
+            <div className="flex-1 h-[1px] bg-gradient-to-r from-primary/30 to-transparent ml-4" />
           </div>
         </AnimatedSection>
 
         <div className="relative">
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-border to-transparent" />
+          {/* Vertical Line */}
+          <div className="absolute left-0 md:left-12 top-0 bottom-0 w-[1px] bg-gradient-to-b from-primary/50 via-border to-transparent" />
 
-          <div className="space-y-16">
+          <div className="space-y-12 sm:space-y-24">
             {experiences.map((exp, i) => (
-              <AnimatedSection key={i} delay={i * 0.15}>
-                <div className="relative pl-8 md:pl-20">
-                  <div className="absolute left-0 md:left-8 top-1 w-2 h-2 -translate-x-[3px] rounded-full bg-primary box-glow" />
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+                className="relative pl-8 md:pl-28"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-0 md:left-12 top-2 w-3 h-3 -translate-x-[6px] rounded-full bg-background border-2 border-primary box-glow shadow-[0_0_15px_rgba(0,255,255,0.4)] z-20" />
 
-                  <motion.div
-                    className="group p-6 rounded-lg border border-border bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-500"
-                    whileHover={{ scale: 1.01 }}
-                  >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div className="group relative">
+                  {/* Glass Card */}
+                  <div className="glass-card p-6 sm:p-8 rounded-2xl border border-white/5 relative overflow-hidden">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-6">
                       <div>
-                        <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                        <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-500">
                           {exp.title}
                         </h3>
-                        <p className="font-mono text-sm text-primary/70">
-                          {exp.company} — {exp.location}
+                        <p className="font-mono text-[10px] sm:text-sm text-primary/70 mt-1">
+                          {exp.company} <span className="opacity-30 mx-2">//</span> {exp.location}
                         </p>
                       </div>
-                      <span className="font-mono text-xs text-muted-foreground mt-2 md:mt-0 bg-secondary/50 px-3 py-1 rounded-full">
+                      <div className="font-mono text-[9px] sm:text-[10px] tracking-widest text-muted-foreground bg-white/5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/5 whitespace-normal sm:whitespace-nowrap inline-block">
                         {exp.period}
-                      </span>
+                      </div>
                     </div>
-                    <ul className="space-y-2">
+
+                    <ul className="grid grid-cols-1 gap-3">
                       {exp.highlights.map((h, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <span className="text-primary/50 mt-1 shrink-0">▹</span>
+                        <motion.li 
+                          key={j} 
+                          className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground/90 leading-relaxed"
+                          whileHover={{ x: 5 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                          <span className="text-primary mt-1.5 shrink-0 text-[10px]">▶</span>
                           {h}
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
-                  </motion.div>
+
+                    {/* Decorative Background Glow on Hover */}
+                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  </div>
                 </div>
-              </AnimatedSection>
+              </motion.div>
             ))}
           </div>
         </div>

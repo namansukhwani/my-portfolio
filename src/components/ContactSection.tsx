@@ -12,7 +12,6 @@ const ContactSection = () => {
 
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
 
-    // Open mailto with pre-filled content
     const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
@@ -23,133 +22,149 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="contact" className="py-12 sm:py-20 px-6 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto relative z-10">
         <AnimatedSection>
-          <div className="flex items-center gap-3 mb-12">
-            <Mail className="w-5 h-5 text-primary" />
-            <h2 className="font-mono text-sm text-primary tracking-widest uppercase">
-              Get In Touch
+          <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
+            <h2 className="font-mono text-[10px] text-primary/60 tracking-[0.6em] uppercase mb-4">
+              CONNECT
             </h2>
-            <div className="flex-1 h-px bg-border" />
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-glow">
+              Get In Touch
+            </h3>
+            <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left side - info */}
-          <AnimatedSection delay={0.1}>
-            <div>
-              <h3 className="text-3xl font-bold text-foreground mb-4">
-                Let's build something <span className="text-primary text-glow">great</span> together
-              </h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm open to discussing impactful backend systems, platform engineering, AI integration, and real-time product challenges. Feel free to reach out.
-              </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start">
+          {/* Left side - Info & Socials */}
+          <AnimatedSection delay={0.2}>
+            <div className="glass-card p-6 sm:p-10 rounded-3xl border border-white/5 h-full flex flex-col justify-between">
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
+                  Let's build the <br className="hidden sm:block"/>
+                  <span className="text-primary text-glow">next generation</span> of tech.
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground/70 mb-8 sm:mb-10 leading-relaxed font-light">
+                  I'm currently looking for new opportunities in HealthTech, Fintech, and AI-driven platforms. 
+                  Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                </p>
 
-              <div className="space-y-4">
-                <a
-                  href="mailto:namansukhwani@gmail.com"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-                >
-                  <div className="p-2 rounded-lg border border-border group-hover:border-primary/30 group-hover:box-glow transition-all">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-sm">namansukhwani@gmail.com</span>
-                </a>
-                <a
-                  href="https://github.com/namansukhwani"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-                >
-                  <div className="p-2 rounded-lg border border-border group-hover:border-primary/30 group-hover:box-glow transition-all">
-                    <Github className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-sm">github.com/namansukhwani</span>
-                </a>
-                <a
-                  href="https://linkedin.com/in/namansukhwani"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-                >
-                  <div className="p-2 rounded-lg border border-border group-hover:border-primary/30 group-hover:box-glow transition-all">
-                    <Linkedin className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-sm">linkedin.com/in/namansukhwani</span>
-                </a>
+                <div className="space-y-4 sm:space-y-6">
+                  {[
+                    { icon: Mail, label: "namansukhwani@gmail.com", href: "mailto:namansukhwani@gmail.com" },
+                    { icon: Github, label: "github.com/namansukhwani", href: "https://github.com/namansukhwani" },
+                    { icon: Linkedin, label: "linkedin.com/in/namansukhwani", href: "https://linkedin.com/in/namansukhwani" },
+                  ].map((item, i) => (
+                    <motion.a
+                      key={i}
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 sm:gap-4 group p-3 sm:p-4 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/10"
+                      whileHover={{ x: 10 }}
+                    >
+                      <div className="p-2.5 sm:p-3 rounded-xl glass border border-white/5 text-primary group-hover:scale-110 transition-transform">
+                        <item.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </div>
+                      <span className="font-mono text-[10px] sm:text-sm text-muted-foreground/60 group-hover:text-foreground transition-colors">
+                        {item.label}
+                      </span>
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Decorative Terminal Line */}
+              <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/5">
+                <div className="flex items-center gap-2 font-mono text-[9px] sm:text-[10px] text-primary/40">
+                  <span className="animate-pulse">●</span>
+                  <span>SYSTEM_READY</span>
+                  <span className="opacity-20 ml-auto">EST: 2026</span>
+                </div>
               </div>
             </div>
           </AnimatedSection>
 
-          {/* Right side - form */}
-          <AnimatedSection delay={0.2}>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="name" className="block font-mono text-xs text-primary/70 mb-2">
-                  {"// name"}
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  maxLength={100}
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-card/50 border border-border text-foreground font-mono text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:box-glow transition-all"
-                  placeholder="John Doe"
-                />
+          {/* Right side - Form */}
+          <AnimatedSection delay={0.4}>
+            <div className="glass-card p-6 sm:p-10 rounded-3xl border border-white/5 relative overflow-hidden">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8 relative z-10">
+                <div className="group">
+                  <label htmlFor="name" className="block font-mono text-[9px] sm:text-[10px] text-primary/40 mb-2 sm:mb-3 tracking-widest uppercase group-focus-within:text-primary transition-colors">
+                    $ name --input
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-foreground font-mono text-xs sm:text-sm placeholder:text-muted-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-primary/5 transition-all duration-300"
+                    placeholder="Enter your name..."
+                  />
+                </div>
+                
+                <div className="group">
+                  <label htmlFor="email" className="block font-mono text-[9px] sm:text-[10px] text-primary/40 mb-2 sm:mb-3 tracking-widest uppercase group-focus-within:text-primary transition-colors">
+                    $ email --input
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-foreground font-mono text-xs sm:text-sm placeholder:text-muted-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-primary/5 transition-all duration-300"
+                    placeholder="name@company.com"
+                  />
+                </div>
+
+                <div className="group">
+                  <label htmlFor="message" className="block font-mono text-[9px] sm:text-[10px] text-primary/40 mb-2 sm:mb-3 tracking-widest uppercase group-focus-within:text-primary transition-colors">
+                    $ message --body
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-white/5 border border-white/10 text-foreground font-mono text-xs sm:text-sm placeholder:text-muted-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-primary/5 transition-all duration-300 resize-none"
+                    placeholder="Write your message here..."
+                  />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="w-full py-4 sm:py-5 rounded-2xl glass border border-primary/20 text-primary font-mono text-[10px] sm:text-xs tracking-[0.3em] uppercase hover:bg-primary/10 transition-all duration-500 shadow-[0_0_20px_rgba(0,255,255,0.05)] disabled:opacity-50"
+                  whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(0,255,255,0.1)" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {status === "sent" ? (
+                    <span className="text-primary/80 animate-pulse">MESSAGE_DISPATCHED_SUCCESSFULLY ✓</span>
+                  ) : (
+                    <div className="flex items-center justify-center gap-3">
+                      <Send className="w-4 h-4" />
+                      EXECUTE_SEND.SH
+                    </div>
+                  )}
+                </motion.button>
+              </form>
+
+              {/* Form background decoration */}
+              <div className="absolute top-0 right-0 p-8 font-mono text-[8px] text-white/5 tracking-[0.5em] pointer-events-none">
+                01101111 01101111
               </div>
-              <div>
-                <label htmlFor="email" className="block font-mono text-xs text-primary/70 mb-2">
-                  {"// email"}
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  maxLength={255}
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-card/50 border border-border text-foreground font-mono text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:box-glow transition-all"
-                  placeholder="john@example.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block font-mono text-xs text-primary/70 mb-2">
-                  {"// message"}
-                </label>
-                <textarea
-                  id="message"
-                  required
-                  maxLength={1000}
-                  rows={4}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-card/50 border border-border text-foreground font-mono text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:box-glow transition-all resize-none"
-                  placeholder="Hey, I'd love to chat about..."
-                />
-              </div>
-              <motion.button
-                type="submit"
-                disabled={status === "sending"}
-                className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:box-glow-strong transition-all duration-300 disabled:opacity-50"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {status === "sent" ? (
-                  "Message opened in email client ✓"
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Send Message
-                  </>
-                )}
-              </motion.button>
-            </form>
+            </div>
           </AnimatedSection>
         </div>
       </div>
+
+      {/* Section Background Decor */}
+      <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 -left-24 w-64 h-64 bg-primary/3 blur-[120px] rounded-full pointer-events-none" />
     </section>
   );
 };
