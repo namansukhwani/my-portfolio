@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -36,9 +36,13 @@
 
     --radius: 0.5rem;
 
-    --neon-glow: 0 0 10px hsl(180 100% 45% / 0.3), 0 0 40px hsl(180 100% 45% / 0.1);
-    --neon-glow-strong: 0 0 10px hsl(180 100% 45% / 0.5), 0 0 40px hsl(180 100% 45% / 0.2), 0 0 80px hsl(180 100% 45% / 0.1);
-    --card-glow: 0 0 1px hsl(180 100% 45% / 0.1), 0 4px 20px hsl(220 20% 4% / 0.8);
+    --neon-glow:
+      0 0 10px hsl(180 100% 45% / 0.3), 0 0 40px hsl(180 100% 45% / 0.1);
+    --neon-glow-strong:
+      0 0 10px hsl(180 100% 45% / 0.5), 0 0 40px hsl(180 100% 45% / 0.2),
+      0 0 80px hsl(180 100% 45% / 0.1);
+    --card-glow:
+      0 0 1px hsl(180 100% 45% / 0.1), 0 4px 20px hsl(220 20% 4% / 0.8);
   }
 }
 
@@ -53,10 +57,17 @@
 
   body {
     @apply bg-background text-foreground font-body;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
   }
 
@@ -98,36 +109,65 @@
   }
 
   @keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
   }
   @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100vh); }
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
   }
   @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
   }
   @keyframes blink-caret {
-    50% { border-color: transparent; }
+    50% {
+      border-color: transparent;
+    }
   }
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: var(--neon-glow); }
-    50% { box-shadow: var(--neon-glow-strong); }
+    0%,
+    100% {
+      box-shadow: var(--neon-glow);
+    }
+    50% {
+      box-shadow: var(--neon-glow-strong);
+    }
   }
 
-  .animate-flicker {
-    animation: flicker 3s infinite;
+  .glass {
+    @apply bg-white/5 border border-white/10;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .glass-dark {
+    @apply bg-black/60 border border-white/5;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
   }
-  .animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+  .glass-card {
+    @apply glass-dark hover:bg-primary/5 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,255,255,0.05)];
   }
 }

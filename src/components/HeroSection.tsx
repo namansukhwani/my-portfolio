@@ -1,165 +1,183 @@
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  ChevronDown,
-  Download,
-} from "lucide-react";
-import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+import { Github, Linkedin, Mail, Phone, Download, ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
+import Magnetic from "./Magnetic";
 import avatar from "@/assets/naman-avatar.jpg";
 
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <motion.img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover opacity-40"
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-      </div>
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollY } = useScroll();
+  
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
 
-      {/* Scanline overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  const springX = useSpring(mousePosition.x, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mousePosition.y, { stiffness: 100, damping: 30 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  };
+
+  const glitchVariants = {
+    initial: { x: 0 },
+    animate: {
+      x: [-1, 1, -1, 0],
+      transition: {
+        duration: 0.2,
+        repeat: Infinity,
+        repeatDelay: 5,
+      },
+    },
+  };
+
+  return (
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 sm:pt-24 px-6 overflow-hidden">
+      {/* Dynamic Background */}
+      <motion.div 
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(180 100% 50% / 0.1) 2px, hsl(180 100% 50% / 0.1) 4px)",
+          x: springX,
+          y: springY,
+          background: "radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 70%)"
         }}
       />
 
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Avatar */}
-        <motion.div
-          className="mb-8 flex justify-center"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <div className="relative">
-            <img
-              src={avatar}
-              alt="Naman Sukhwani"
-              className="w-32 h-32 rounded-full border-2 border-primary/40 animate-pulse-glow object-cover"
+      <motion.div
+        style={{ y: y1, opacity, scale }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 max-w-4xl w-full text-center"
+      >
+        {/* Avatar with Enhanced Glow */}
+        <motion.div variants={itemVariants} className="mb-8 sm:mb-12 flex justify-center">
+          <div className="relative group">
+            <motion.div 
+              className="absolute -inset-4 rounded-full bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 4, repeat: Infinity }}
             />
-            <div className="absolute -inset-1 rounded-full border border-primary/20 animate-ping opacity-20" />
+            <div className="relative">
+              <img
+                src={avatar}
+                alt="Naman Sukhwani"
+                className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-primary/30 p-1 backdrop-blur-sm object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute -inset-0.5 rounded-full border border-primary/50 animate-ping opacity-10" />
+            </div>
           </div>
         </motion.div>
 
-        {/* Terminal-style intro */}
-        <motion.div
-          className="mb-4 font-mono text-sm text-muted-foreground"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <span className="text-primary">$</span> whoami
+        <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
+          <span className="font-mono text-[10px] sm:text-xs tracking-[0.4em] sm:tracking-[0.5em] text-primary/60 uppercase">
+            // system_v2.0 // sde_portfolio
+          </span>
         </motion.div>
 
-        <motion.h1
-          className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <span className="text-primary text-glow-strong">Naman</span>{" "}
-          <span className="text-foreground">Sukhwani</span>
-        </motion.h1>
-
-        <motion.div
-          className="font-mono text-lg md:text-xl text-muted-foreground mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          <span className="text-primary/70">&gt;</span> Senior Software
-          Development Engineer{" "}
-          <span className="text-primary animate-flicker">_</span>
+        <motion.div variants={itemVariants} className="relative mb-6 sm:mb-8">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter text-foreground selection:bg-primary selection:text-black">
+            <motion.span variants={glitchVariants} animate="animate" className="text-primary text-glow">Naman</motion.span> Sukhwani
+          </h1>
+          <div className="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-primary/20 rounded-tr-2xl hidden sm:block" />
+          <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-primary/20 rounded-bl-2xl hidden sm:block" />
         </motion.div>
 
-        <motion.p
-          className="text-muted-foreground max-w-2xl mx-auto mb-10 text-base leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+        <motion.div variants={itemVariants} className="mb-6 sm:mb-8">
+          <h2 className="font-mono text-sm sm:text-lg md:text-xl text-primary tracking-[0.1em] sm:tracking-[0.2em] font-medium uppercase text-glow opacity-80 px-4">
+            Senior Software Development Engineer
+          </h2>
+        </motion.div>
+
+        <motion.p 
+          variants={itemVariants}
+          className="text-base sm:text-xl md:text-2xl text-muted-foreground/80 mb-8 sm:mb-12 max-w-2xl mx-auto font-light leading-relaxed px-4"
         >
-          Experienced Senior Software Development Engineer with nearly 4 years
-          of building high-availability microservices and event-driven systems
-          at <span className="text-primary/80">Bajaj Finserv Health</span>.
-          Specialized in Java, TypeScript, Spring Boot, AI integration, and
-          real-time platforms with a track record of reducing operational costs
-          by up to 80%.
+          Architecting <span className="text-foreground font-medium">high-availability</span> microservices & 
+          <span className="text-foreground font-medium italic"> AI-driven</span> platforms at Bajaj Finserv Health.
         </motion.p>
 
-        {/* Social links + Resume */}
-        <motion.div
-          className="flex items-center justify-center gap-4 mb-16 flex-wrap"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-        >
-          {[
-            {
-              icon: Github,
-              href: "https://github.com/namansukhwani",
-              label: "GitHub",
-            },
-            {
-              icon: Linkedin,
-              href: "https://linkedin.com/in/namansukhwani",
-              label: "LinkedIn",
-            },
-            {
-              icon: Mail,
-              href: "mailto:namansukhwani@gmail.com",
-              label: "Email",
-            },
-            { icon: Phone, href: "tel:+918982338575", label: "Phone" },
-          ].map(({ icon: Icon, href, label }) => (
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 sm:mb-20">
+          <div className="flex items-center gap-1 sm:gap-2 p-1 sm:p-2 glass-dark rounded-2xl border border-white/5 h-14 sm:h-[60px]">
+            {[
+              { icon: Github, href: "https://github.com/namansukhwani", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com/in/namansukhwani", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:namansukhwani@gmail.com", label: "Email" },
+              { icon: Phone, href: "tel:+918982338575", label: "Phone" },
+            ].map(({ icon: Icon, href, label }) => (
+              <Magnetic key={label}>
+                <motion.a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300 group"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
+                </motion.a>
+              </Magnetic>
+            ))}
+          </div>
+
+          <Magnetic>
             <motion.a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-3 rounded-lg border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:box-glow transition-all duration-300"
-              aria-label={label}
-              whileHover={{ scale: 1.15, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              href="/Naman_Sukhwani_Resume.pdf"
+              download
+              className="h-14 sm:h-[60px] px-6 sm:px-8 glass-dark border border-primary/20 rounded-2xl flex items-center gap-3 font-mono text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] text-primary hover:bg-primary/10 transition-all duration-500 shadow-[0_0_20px_rgba(0,255,255,0.05)] group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              <Download className="w-4 h-4 group-hover:animate-bounce" />
+              <span>GET_RESUME.EXE</span>
             </motion.a>
-          ))}
-
-          <motion.a
-            href="/Naman_Sukhwani_Resume.pdf"
-            download="Naman_Sukhwani_Resume.pdf"
-            className="group px-5 py-3 rounded-lg border border-primary/40 bg-primary/10 backdrop-blur-sm hover:bg-primary/20 hover:box-glow transition-all duration-300 flex items-center gap-2 font-mono text-sm text-primary"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Download className="w-4 h-4" />
-            Resume
-          </motion.a>
+          </Magnetic>
         </motion.div>
+      </motion.div>
 
-        {/* Scroll indicator */}
+      {/* Interactive Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
         <motion.a
           href="#experience"
-          className="inline-flex flex-col items-center text-muted-foreground hover:text-primary transition-colors"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
+          className="flex flex-col items-center gap-3 text-primary/40 hover:text-primary transition-colors group"
         >
-          <span className="font-mono text-xs mb-2">scroll_down</span>
-          <ChevronDown className="w-5 h-5 animate-bounce" />
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase">Initialize Scroll</span>
+          <div className="w-6 h-10 border-2 border-primary/20 rounded-full flex justify-center p-1">
+            <motion.div 
+              className="w-1 h-2 bg-primary/60 rounded-full"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </div>
         </motion.a>
-      </div>
+      </motion.div>
     </section>
   );
 };
