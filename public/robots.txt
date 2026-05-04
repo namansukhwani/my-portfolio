@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://namansukhwani.com/sitemap.xml
+Sitemap: https://namansukhwani.vercel.app/sitemap.xml
