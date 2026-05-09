@@ -180,7 +180,7 @@ const Navbar = () => {
                       <span className="font-mono text-[10px] text-primary tracking-[0.5em] mb-1 opacity-60">
                         0{i + 1}
                       </span>
-                      <h2
+                      <span
                         className={`text-2xl sm:text-4xl font-bold tracking-tighter transition-all duration-500 ${
                           activeSection === item.href.slice(1)
                             ? "text-primary text-glow-strong scale-110"
@@ -188,7 +188,7 @@ const Navbar = () => {
                         }`}
                       >
                         {item.label}
-                      </h2>
+                      </span>
                       <div
                         className={`mt-2 h-[1px] bg-primary transition-all duration-500 ${
                           activeSection === item.href.slice(1)

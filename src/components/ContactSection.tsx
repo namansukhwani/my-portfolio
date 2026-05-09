@@ -26,12 +26,12 @@ const ContactSection = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <AnimatedSection>
           <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
-            <h2 className="font-mono text-[10px] text-primary/60 tracking-[0.6em] uppercase mb-4">
+            <div className="font-mono text-[10px] text-primary/60 tracking-[0.6em] uppercase mb-4">
               CONNECT
-            </h2>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-glow">
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-glow">
               Get In Touch
-            </h3>
+            </h2>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
           </div>
         </AnimatedSection>

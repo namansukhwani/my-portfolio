@@ -70,10 +70,10 @@ const ExperienceSection = () => {
               <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <h2 className="font-mono text-[10px] text-primary/60 tracking-[0.4em] uppercase mb-1">
+              <div className="font-mono text-[10px] text-primary/60 tracking-[0.4em] uppercase mb-1">
                 Phase 02
-              </h2>
-              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">Work Experience</h3>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Work Experience</h2>
             </div>
             <div className="flex-1 h-[1px] bg-gradient-to-r from-primary/30 to-transparent ml-4" />
           </div>
