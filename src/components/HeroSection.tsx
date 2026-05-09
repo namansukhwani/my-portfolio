@@ -85,6 +85,9 @@ const HeroSection = () => {
               <img
                 src={avatar}
                 alt="Naman Sukhwani"
+                width={128}
+                height={128}
+                fetchpriority="high"
                 className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-primary/30 p-1 backdrop-blur-sm object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute -inset-0.5 rounded-full border border-primary/50 animate-ping opacity-10" />
